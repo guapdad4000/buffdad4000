@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BUFFDAD 4000</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Importing a pixel-like font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Audio Elements for Sound Effects -->
+    <audio
+      id="start-pause-sound"
+      src="https://www.pacdv.com/sounds/preview/sound1.mp3"
+    ></audio>
+    <audio
+      id="muscle-group-sound"
+      src="https://www.pacdv.com/sounds/preview/sound10.mp3"
+    ></audio>
+    <audio
+      id="hover-sound"
+      src="https://www.pacdv.com/sounds/preview/sound18.mp3"
+    ></audio>
+    <audio
+      id="timer-end-sound"
+      src="https://www.pacdv.com/sounds/preview/sound1.mp3"
+    ></audio>
+    <audio
+      id="checkbox-sound"
+      src="https://www.pacdv.com/sounds/preview/sound61.mp3"
+    ></audio>
+    <audio
+      id="applause-sound"
+      src="https://www.pacdv.com/sounds/preview/applause-2.mp3"
+    ></audio>
+    <!-- New applause sound -->
+
+    <!-- Tracker Main Page (Title Screen) -->
+    <div id="tracker-main" class="page active">
+      <h1 id="timer">45:00</h1>
+      <button id="start-btn">Start</button>
+      <!-- Clickable Muscle Group Quadrants -->
+      <div
+        class="muscle-group chest"
+        onclick="loadWorkout('chest')"
+        tabindex="0"
+        aria-label="Select Chest Workout"
+      ></div>
+      <div
+        class="muscle-group shoulders"
+        onclick="loadWorkout('shoulders')"
+        tabindex="0"
+        aria-label="Select Shoulders Workout"
+      ></div>
+      <div
+        class="muscle-group triceps"
+        onclick="loadWorkout('triceps')"
+        tabindex="0"
+        aria-label="Select Triceps Workout"
+      ></div>
+      <div
+        class="muscle-group biceps"
+        onclick="loadWorkout('biceps')"
+        tabindex="0"
+        aria-label="Select Biceps Workout"
+      ></div>
+      <div
+        class="muscle-group back"
+        onclick="loadWorkout('back')"
+        tabindex="0"
+        aria-label="Select Back Workout"
+      ></div>
+      <div
+        class="muscle-group legs"
+        onclick="loadWorkout('legs')"
+        tabindex="0"
+        aria-label="Select Legs Workout"
+      ></div>
+    </div>
+
+    <!-- Workout Layout Page -->
+    <div id="workout-layout" class="page">
+      <div id="motivational-quote"></div>
+      <div id="gear-list"></div>
+      <div id="gear-needed">Gear Needed</div>
+      <div id="workout-timer">45:00</div>
+      <img
+        id="timer-overlay"
+        src="https://i.imgur.com/BDSpUIM.gif"
+        alt="Timer Overlay"
+      />
+      <div id="warm-up" class="workout-section">
+        <div class="section-title">
+          Warm-Up
+          <input
+            type="checkbox"
+            class="section-checkbox"
+            data-section="warm-up"
+          />
+        </div>
+        <div class="section-description"></div>
+      </div>
+      <div id="main-workout" class="workout-section">
+        <div class="section-title">
+          Main Workout
+          <input
+            type="checkbox"
+            class="section-checkbox"
+            data-section="main-workout"
+          />
+        </div>
+        <ul class="section-description"></ul>
+      </div>
+      <div id="cool-down" class="workout-section">
+        <div class="section-title">
+          Cool-Down & Extra Credit
+          <input
+            type="checkbox"
+            class="section-checkbox"
+            data-section="cool-down"
+          />
+        </div>
+        <div class="section-description"></div>
+      </div>
+      <img
+        id="random-gif"
+        src="https://i.imgur.com/oOvqF9H.gif"
+        alt="Random GIF"
+      />
+      <img
+        id="completion-gif"
+        src="https://i.imgur.com/nIlbGLG.gif"
+        alt="Completion GIF"
+      />
+      <button id="next-btn">Next</button>
+      <button onclick="switchPage('tracker-main')">Back</button>
+      <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

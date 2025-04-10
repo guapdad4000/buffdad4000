@@ -1,0 +1,451 @@
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  overflow: auto;
+}
+
+.page {
+  display: none;
+  text-align: center;
+  width: 813px;
+  height: 1188px;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Tracker Main Page Background */
+#tracker-main {
+  background: url("https://i.imgur.com/YJ9vDzV.gif") no-repeat center top;
+  background-size: 813px 1188px;
+}
+
+/* Adjust timer size and position */
+#tracker-main #timer {
+  font-size: 2.5em;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #00ff99;
+  text-shadow: 0 0 10px #00ff99;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+#tracker-main #timer.active {
+  animation: pulse 2s infinite;
+}
+
+/* Timer pulse animation */
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 10px #00ff99;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ff99;
+  }
+  100% {
+    text-shadow: 0 0 10px #00ff99;
+  }
+}
+
+/* Timer scale effect on update */
+.timer-update {
+  animation: scale 0.3s ease;
+}
+
+@keyframes scale {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Start button on title screen */
+#tracker-main #start-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  background: #00ff99;
+  border: none;
+  padding: 10px 20px;
+  color: #1a1a1a;
+  font-size: 1.2em;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #00ff99;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+#tracker-main #start-btn:hover {
+  box-shadow: 0 0 15px #00ff99, 0 0 25px #00ff99;
+}
+
+/* Muscle Group Clickable Quadrants */
+.muscle-group {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+/* Hover Animation for Muscle Groups */
+.muscle-group:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ff99; /* Glowing effect */
+  border: 2px dotted #00ff99; /* Dotted border */
+  animation: pulsate 1.5s infinite; /* Pulsating effect */
+}
+
+/* Pulsating Animation */
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 20px #00ff99;
+    border-color: #00ff99;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 30px #00ff99;
+    border-color: rgba(0, 255, 153, 0.7);
+    opacity: 0.8;
+  }
+  100% {
+    box-shadow: 0 0 20px #00ff99;
+    border-color: #00ff99;
+    opacity: 1;
+  }
+}
+
+/* Positions for each muscle group */
+.muscle-group.chest {
+  top: 330px;
+  left: 150px;
+}
+
+.muscle-group.shoulders {
+  top: 330px;
+  left: 450px;
+}
+
+.muscle-group.triceps {
+  top: 570px;
+  left: 165px;
+}
+
+.muscle-group.biceps {
+  top: 570px;
+  left: 465px;
+}
+
+.muscle-group.back {
+  top: 810px;
+  left: 165px;
+}
+
+.muscle-group.legs {
+  top: 810px;
+  left: 465px;
+}
+
+/* Workout Layout Page Background */
+#workout-layout {
+  background: url("https://i.imgur.com/Xqg7HRv.gif") no-repeat center top;
+  background-size: 813px 1188px;
+}
+
+/* Motivational Quote */
+#motivational-quote {
+  position: absolute;
+  top: 385px;
+  right: 185px;
+  color: white;
+  font-size: 1.1em;
+  font-style: italic;
+  text-align: right;
+  width: 300px;
+  z-index: 1;
+}
+
+/* Gear List */
+#gear-list {
+  position: absolute;
+  top: 352px; /* Moved down 20px from 332px */
+  left: 112px; /* Moved right 10px from 102px */
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  z-index: 1;
+  width: 200px;
+}
+
+/* Gear Needed Label */
+#gear-needed {
+  position: absolute;
+  top: 500px;
+  left: 150px;
+  color: black;
+  font-size: 1.2em;
+  font-weight: bold;
+  z-index: 1;
+}
+
+/* Timer on Workout Layout */
+#workout-timer {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3em;
+  color: yellow;
+  text-shadow: 0 0 10px yellow;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+#workout-timer.active {
+  animation: pulse 2s infinite;
+}
+
+/* Timer Overlay Image */
+#timer-overlay {
+  position: absolute;
+  top: 282px; /* Unchanged */
+  left: 102px; /* Unchanged */
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
+/* Random GIF to the Right of the Quote */
+#random-gif {
+  position: absolute;
+  left: 588px;
+  top: 345px;
+  width: 175px; /* Already increased by 75% */
+  height: 175px; /* Already increased by 75% */
+  z-index: 2;
+  display: none; /* Hidden by default, shown randomly via JavaScript */
+}
+
+/* Completion GIF */
+#completion-gif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; /* Already increased by 400% */
+  height: 800px; /* Already increased by 400% */
+  z-index: 3;
+  display: none; /* Hidden by default, shown on completion */
+}
+
+/* Workout Sections */
+.workout-section {
+  position: absolute;
+  z-index: 1;
+  text-align: left;
+  padding: 10px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Fade-in animation for workout sections */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section Titles */
+.section-title {
+  color: black;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+/* Section Descriptions */
+.section-description {
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* Cool-Down & Extra Credit Body Text Font Size */
+#cool-down .section-description {
+  font-size: 0.9em;
+}
+
+/* Staggered Text Animation for Section Descriptions */
+.section-description span {
+  opacity: 0;
+  animation: charFadeIn 0.5s ease forwards;
+}
+
+@keyframes charFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Flickering Effect */
+.section-description span.flicker {
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  12% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  62% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Checkbox Styling */
+.section-checkbox {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Warm-Up */
+#warm-up {
+  top: 550px;
+  left: 150px;
+  width: 470px;
+  height: 120px;
+  animation-delay: 0.1s;
+}
+
+/* Main Workout */
+#main-workout {
+  top: 700px;
+  left: 150px;
+  width: 470px;
+  height: 120px;
+  overflow-y: auto;
+  animation-delay: 0.2s;
+}
+
+/* Main Workout Bullet Points */
+#main-workout .section-description {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Cool-Down & Extra Credit */
+#cool-down {
+  top: 890px;
+  left: 150px;
+  width: 470px;
+  height: 220px;
+  animation-delay: 0.3s;
+}
+
+/* Adjust font size for Cool-Down & Extra Credit title */
+#cool-down .section-title {
+  font-size: 1.2em;
+}
+
+/* Next Button */
+#next-btn {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff5555;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1.2em;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ff5555;
+  cursor: pointer;
+  z-index: 1;
+  transition: box-shadow 0.3s ease;
+}
+
+#next-btn:hover {
+  box-shadow: 0 0 15px #ff5555, 0 0 25px #ff5555;
+}
+
+/* Back button on workout layout */
+#workout-layout button[onclick="switchPage('tracker-main')"] {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00ff99;
+  border: none;
+  padding: 10px 20px;
+  color: #1a1a1a;
+  font-size: 1.2em;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #00ff99;
+  cursor: pointer;
+  z-index: 1;
+  transition: box-shadow 0.3s ease;
+}
+
+#workout-layout button[onclick="switchPage('tracker-main')"]:hover {
+  box-shadow: 0 0 15px #00ff99, 0 0 25px #00ff99;
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
